@@ -1,0 +1,631 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>[hidden]{display:none!important}body{margin:0}
+.bp{margin:clamp(28px,4vw,48px) 0 0;background:var(--card);border-radius:14px;padding:clamp(16px,2.6vw,32px);color:var(--ink)}
+.bp figcaption h3{margin:0;font:600 clamp(20px,2vw,26px)/1.2 var(--sans)}
+.bp figcaption>p{margin:6px 0 0;color:var(--muted);font-size:14px;max-width:70ch}
+.bp-key{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font:500 11px/1.4 var(--mono);letter-spacing:.04em;color:var(--muted)}
+.bp-key li{display:flex;align-items:center;gap:7px}
+.bp-key i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.k-ph,.bp-c.ph{--t:#E8A23A}.k-cu,.bp-c.cu{--t:#7FB2FF}.k-fr,.bp-c.fr{--t:#5DD3A0}.k-bk,.bp-c.bk{--t:#F06A5F}.k-sp,.bp-c.sp{--t:#B9A6F2}
+.bp-key i{background:var(--t)}
+.k-line::before{content:"";width:22px;border-top:2px dashed currentColor}
+.k-line.li{color:#7FB2FF}.k-line.lv{color:#F06A5F}.k-line.lin{color:#B9A6F2}
+.bp-grid{margin-top:20px;display:grid;gap:8px}
+.bp-head,.bp-row{display:grid;grid-template-columns:minmax(120px,.8fr) repeat(5,minmax(0,1fr));gap:0}
+.bp-head{position:sticky;top:0;z-index:2;background:var(--card);padding-bottom:6px;border-bottom:1px solid var(--line)}
+.bp-head span{font:600 11px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 12px}
+.bp-h.cu{border-right:2px dashed #7FB2FF}.bp-h.fr{border-right:2px dashed #F06A5F}.bp-h.bk{border-right:2px dashed #B9A6F2}
+.bp-row{background:var(--card2);border-radius:10px;overflow:hidden}
+.bp-stage{padding:14px 12px;background:rgba(244,239,230,.04);display:flex;flex-direction:column;gap:6px}
+.bp-n{font:600 12px var(--mono);color:var(--amber)}
+.bp-stage h4{margin:0;font:600 15px/1.3 var(--sans)}
+.bp-stage h4 em{font:600 10px var(--mono);font-style:normal;background:var(--green);color:#0F1B2D;border-radius:4px;padding:2px 6px;margin-left:4px;vertical-align:2px}
+.bp-c{padding:14px 12px;border-top:3px solid var(--t);min-width:0}
+.bp-c.cu{border-right:2px dashed #7FB2FF}.bp-c.fr{border-right:2px dashed #F06A5F}.bp-c.bk{border-right:2px dashed #B9A6F2}
+.bp-c p{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.bp-c .rg{color:var(--green);font-weight:600}.bp-c .ir{color:var(--red);font-weight:600}
+.bp-l{display:none;font:600 10px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--t);margin-bottom:6px}
+.bp-note{margin:14px 0 0;font:12px/1.5 var(--mono);color:var(--muted)}
+@media (max-width:980px){
+ .bp-head{display:none}
+ .bp-row{grid-template-columns:1fr}
+ .bp-stage{flex-direction:row;align-items:baseline;gap:10px}
+ .bp-c{border-top:0;border-left:3px solid var(--t);border-right:0!important;border-bottom:1px solid var(--line)}
+ .bp-c:last-child{border-bottom:0}
+ .bp-l{display:block}
+ .bp-c.cu{box-shadow:inset 0 -2px 0 0 transparent}
+ .bp-c.cu::after,.bp-c.fr::after,.bp-c.bk::after{content:"";display:block;margin-top:12px;border-top:2px dashed var(--lc)}
+ .bp-c.cu{--lc:#7FB2FF}.bp-c.fr{--lc:#F06A5F}.bp-c.bk{--lc:#B9A6F2}
+}
+</style></head><body>
+<meta charset="utf-8">
+<title>InRide Case Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif&display=swap">
+<style>
+:root{
+  --bg:#1C1B1D;--bg2:#161517;--card:#0F1B2D;--card2:#13233A;--ink:#F4EFE6;--muted:rgba(244,239,230,.62);--line:rgba(244,239,230,.13);
+  --amber:#E8A23A;--amber-soft:rgba(232,162,58,.14);--red:#F06A5F;--green:#5DD3A0;--blue:#1A56DB;
+  --sans:"Space Grotesk","Helvetica Neue",Arial,system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--serif:"Instrument Serif",Georgia,serif;
+  --ease:cubic-bezier(.22,1,.36,1);color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:64px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p{margin:0}
+h1,h2,h3{font-weight:500;letter-spacing:-.025em;line-height:1.08;text-wrap:balance}
+a{color:inherit}
+img{max-width:100%;display:block}
+::selection{background:var(--amber);color:#1C1B1D}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
+.mono{font:500 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.amber{color:var(--amber)}
+.muted{color:var(--muted)}
+
+/* bar */
+.bar{position:sticky;top:0;z-index:50;background:rgba(28,27,29,.84);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar-in{display:flex;align-items:center;gap:20px;min-height:54px}
+.brand{font:600 15px var(--sans);text-decoration:none;display:flex;gap:9px;align-items:center;white-space:nowrap}
+.brand i{width:20px;height:20px;border-radius:6px;background:var(--amber);display:grid;place-items:center}
+.brand i::after{content:"";width:6px;height:6px;border-radius:50%;background:#1C1B1D}
+.navs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:flex-end}
+.navs::-webkit-scrollbar{display:none}
+.navs a{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:13px;padding:6px 10px;transition:color .4s var(--ease)}
+.navs a:hover,.navs a.on{color:var(--amber)}
+.prog{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--amber);transform-origin:left;transform:scaleX(var(--p,0))}
+
+/* hero */
+.hero{padding-block:clamp(56px,8vw,112px) clamp(48px,6vw,88px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(32px,6vw,88px);align-items:center}
+.hero h1{font-size:clamp(44px,6.2vw,84px);line-height:.98;letter-spacing:-.045em;margin:20px 0 26px}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block;animation:up 1.1s var(--ease) both}
+@keyframes up{from{transform:translateY(105%)}to{transform:none}}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.f1{animation:fade 1s var(--ease) .45s both}.f2{animation:fade 1s var(--ease) .65s both}
+.lead{font-size:clamp(17px,1.4vw,19px);color:var(--muted);max-width:52ch}
+.lead b{color:var(--ink);font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px;align-items:center}
+.chips a{font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 12px;text-decoration:none;transition:color .4s,border-color .4s}
+.chips a:hover{color:var(--amber);border-color:var(--amber)}
+.chips span{color:var(--muted);font-size:12px}
+
+/* phone replica */
+.phone{width:min(320px,100%);margin-inline:auto;border-radius:38px;padding:9px;background:#0B0B0C;box-shadow:0 40px 80px -40px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.08);animation:fade 1.2s var(--ease) .3s both}
+.scr{background:#fff;color:#1F2328;border-radius:30px;overflow:hidden;font-size:13px}
+.map{height:150px;position:relative;background:#E8EEF2;background-image:linear-gradient(115deg,transparent 46%,#fff 46%,#fff 50%,transparent 50%),linear-gradient(20deg,transparent 60%,#fff 60%,#fff 63%,transparent 63%),radial-gradient(circle at 25% 70%,#CFE6D2 0 18%,transparent 19%)}
+.map .top{position:absolute;inset:14px 14px auto;display:flex;align-items:center;gap:10px;font:600 14px var(--sans)}
+.map .top i{width:28px;height:28px;border-radius:50%;background:#fff;display:grid;place-items:center;font-style:normal;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.route{position:absolute;left:22%;top:58%;width:56%;height:2px;background:var(--blue);transform:rotate(-12deg);transform-origin:left}
+.route::before,.route::after{content:"";position:absolute;top:-5px;width:12px;height:12px;border-radius:50%;border:3px solid var(--blue);background:#fff}
+.route::before{left:-6px}.route::after{right:-6px;background:var(--blue)}
+.trip{margin:-18px 12px 0;position:relative;background:#fff;border-radius:14px;box-shadow:0 6px 18px -8px rgba(0,0,0,.3);padding:10px 12px;font-size:12px;color:#5B6470}
+.trip b{color:#1F2328;font-weight:600}
+.rides{padding:10px 12px 4px;display:flex;flex-direction:column;gap:6px}
+.ride{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 10px;border-radius:12px;border:1.5px solid transparent;transition:border-color .5s,background .5s}
+.ride .ic{width:30px;height:30px;border-radius:8px;background:#F1F3F5;display:grid;place-items:center;font-size:14px}
+.ride b{font-weight:600;color:#1F2328;font-size:13px}
+.ride small{display:block;color:#6B7280;font-size:11px}
+.ride .p{font:600 14px var(--sans);color:#1F2328}
+.ride.on{border-color:var(--blue);background:#EEF3FF}
+.tg{font:600 9px var(--sans);border-radius:4px;padding:1px 5px;margin-left:5px;vertical-align:1px}
+.tg.c{background:#FFF1D6;color:#9A6100}.tg.s{background:#FDE3E1;color:#C2342A}.tg.f{background:#E5F6EE;color:#14774A}
+.bookb{margin:8px 12px 14px;background:var(--blue);color:#fff;text-align:center;border-radius:10px;padding:11px;font:600 13px var(--sans)}
+
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:clamp(48px,7vw,96px)}
+.st{padding:18px 16px 0 0;min-width:0}
+.st+.st{padding-left:16px;border-left:1px solid var(--line)}
+.st b{display:block;font:400 clamp(40px,5vw,64px)/1 var(--serif);color:var(--amber);margin-bottom:8px;white-space:nowrap}
+.st span{font-size:14px;color:var(--muted)}
+.meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:40px}
+.meta dd{margin:4px 0 0;font-size:15px}
+
+/* sections with a timeline rail like the source */
+section{padding-block:clamp(72px,9vw,128px);scroll-margin-top:52px}
+section.alt{background:var(--bg2)}
+.sh{display:grid;grid-template-columns:56px minmax(0,1fr);gap:20px;align-items:start}
+.num{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--amber);background:var(--card);display:grid;place-items:center;font:500 12px var(--mono);color:var(--amber)}
+.sh h2{font-size:clamp(30px,4vw,48px);margin:10px 0 18px;max-width:20ch}
+.sh .lead{max-width:62ch}
+.body{margin-left:76px}
+.grid{display:grid;gap:14px;margin-top:clamp(28px,4vw,48px)}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px;min-width:0;transition:transform .7s var(--ease),border-color .5s}
+.card:hover{transform:translateY(-3px);border-color:rgba(232,162,58,.35)}
+.card h3{font-size:17px;margin:8px 0 6px}
+.card p{font-size:14px;color:var(--muted)}
+.plate{background:var(--card);border-radius:14px;padding:clamp(10px,2vw,20px);margin-top:clamp(28px,4vw,48px);overflow:hidden}
+.plate img{border-radius:8px;width:100%;transition:transform 1.2s var(--ease)}
+.plate:hover img{transform:scale(1.015)}
+figure{margin:0}
+figcaption{font-size:13px;color:var(--muted);margin-top:10px}
+.scrollx{overflow-x:auto}
+.scrollx img{min-width:900px}
+
+/* personas */
+.persona{display:flex;flex-direction:column;gap:6px}
+.av{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font:600 15px var(--sans);color:#1C1B1D}
+.syn{list-style:none;margin:clamp(32px,4vw,56px) 0 0;padding:0;border-top:1px solid var(--line)}
+.syn li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:12px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.syn b{font:400 30px/1 var(--serif);color:var(--amber)}
+.syn h3{font-size:clamp(18px,1.8vw,22px)}
+
+/* journey */
+.journey{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;margin-top:clamp(28px,4vw,48px);position:relative}
+.journey::before{content:"";position:absolute;left:0;right:0;top:64px;height:2px;background:linear-gradient(90deg,var(--green),var(--amber) 35%,var(--red) 60%,var(--amber) 85%,var(--green))}
+.js{padding:0 10px 0 0;position:relative}
+.js .mono{display:block;margin-bottom:8px}
+.js h3{font-size:17px;margin-bottom:22px}
+.js i{display:block;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--c);margin-bottom:14px;position:relative;z-index:1}
+.js p{font-size:13px;color:var(--muted)}
+
+/* as-is vs to-be */
+.race{margin-top:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:14px}
+.lane{display:grid;grid-template-columns:70px minmax(0,1fr);gap:14px;align-items:center}
+.track{height:38px;border-radius:8px;background:rgba(255,255,255,.05);overflow:hidden}
+.track i{display:flex;align-items:center;height:100%;width:0;border-radius:8px;padding-left:12px;font:500 12px var(--mono);color:#1C1B1D;white-space:nowrap;transition:width 1.8s var(--ease)}
+.toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;margin-top:24px}
+.toggle button{border:0;background:none;color:var(--muted);font:500 13px var(--sans);padding:8px 16px;border-radius:999px;cursor:pointer;transition:all .4s}
+.toggle button[aria-pressed=true]{background:var(--amber);color:#1C1B1D}
+.steps{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column}
+.steps li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;animation:fade .6s var(--ease) both}
+.steps li::before{content:attr(data-n);font:500 11px var(--mono);color:var(--amber);padding-top:4px}
+.steps li.bad{color:var(--muted)}
+.steps li.bad::before{color:var(--red)}
+.steps small{display:block;font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.steps .x{color:var(--red)}.steps .ok{color:var(--green)}
+
+.notes{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(28px,4vw,40px)}
+.note{background:#F7D774;color:#2A2410;padding:14px 16px;width:200px;font-size:14px;line-height:1.35;box-shadow:0 14px 24px -14px rgba(0,0,0,.6);transform:rotate(var(--r,-1.5deg));transition:transform .6s var(--ease)}
+.note:nth-child(even){background:#B9E5C9;--r:1.5deg}
+.note:nth-child(3n){background:#F6C1C8;--r:-.5deg}
+.note:hover{transform:rotate(0) translateY(-4px)}
+.note small{display:block;font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;opacity:.65;margin-top:8px}
+.photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.photos img{border-radius:10px;aspect-ratio:3/4;object-fit:cover;width:100%;filter:saturate(.9)}
+
+.tlist{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.tlist li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:16px 0;border-bottom:1px solid var(--line);font-size:15px}
+.tlist b{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber);padding-top:3px}
+
+.quote{margin-top:clamp(40px,6vw,72px);font:400 clamp(28px,4.4vw,52px)/1.1 var(--serif);letter-spacing:-.01em;max-width:24ch}
+.quote em{font-style:normal;color:var(--amber)}
+.next{background:var(--amber);color:#1C1B1D;padding-block:clamp(64px,9vw,128px) clamp(40px,5vw,72px)}
+.next .mono{color:rgba(28,27,29,.65)}
+.nextlink{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:clamp(24px,4vw,48px);border-block:1px solid #1C1B1D;text-decoration:none;margin:16px 0 20px}
+.nextlink span:first-child{font:500 clamp(40px,8vw,104px)/.95 var(--sans);letter-spacing:-.045em}
+.nextlink .ar{font:400 clamp(32px,5vw,72px)/1 var(--serif);transition:transform .8s var(--ease)}
+.nextlink:hover .ar{transform:translateX(14px)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:8px;padding:12px 18px;font:500 14px var(--sans);text-decoration:none;background:#1C1B1D;color:var(--ink)}
+footer{padding-block:36px 56px;font-size:13px;color:var(--muted)}
+
+.rv{transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0ms)}
+.rv.pre{opacity:.06;transform:translateY(26px)}
+
+.sub{font-size:clamp(19px,1.8vw,23px);margin-top:clamp(48px,6vw,80px);margin-bottom:10px;padding-top:18px;border-top:1px solid var(--line)}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink);margin-top:clamp(28px,4vw,48px)}
+.fact{padding:20px 18px 18px 0;display:flex;flex-direction:column;gap:8px;border-bottom:1px solid var(--line)}
+.fact:not(:nth-child(3n+1)){padding-left:18px;border-left:1px solid var(--line)}
+.fact b{font:400 clamp(36px,4vw,52px)/1 var(--serif);color:var(--amber)}
+.fact p{font-size:14.5px}
+.fact cite{font:400 11.5px/1.4 var(--mono);color:var(--muted);font-style:normal;margin-top:auto}
+.pq{margin:clamp(32px,4vw,48px) 0 0;padding:0 0 0 20px;border-left:2px solid var(--amber);font:400 clamp(20px,2.2vw,28px)/1.3 var(--serif);max-width:44ch}
+.pq cite{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-style:normal;margin-top:12px}
+table.cmp{border-collapse:collapse;width:100%;min-width:640px;font-size:14px;margin-top:8px}
+.cmp th{text-align:left;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:10px 14px 10px 0;border-bottom:1px solid var(--ink)}
+.cmp td{padding:14px 14px 14px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
+.cmp td:first-child{color:var(--ink);font-weight:500;width:18%}
+.pc{display:inline-block;font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:2px 6px;margin-right:8px}
+.pc.pro{background:rgba(93,211,160,.15);color:var(--green)}.pc.con{background:rgba(240,106,95,.15);color:var(--red)}
+.hbars{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.hb{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 44px;gap:14px;align-items:center;font-size:14px}
+.hb .t{height:8px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
+.hb .t i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--amber),var(--red));transition:width 1.4s var(--ease)}
+.hb b{font:500 13px var(--mono);text-align:right;color:var(--amber)}
+.ptabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:clamp(28px,4vw,44px)}
+.ptabs button{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:none;color:var(--muted);border-radius:999px;padding:5px 14px 5px 5px;font:500 14px var(--sans);cursor:pointer;transition:all .4s var(--ease)}
+.ptabs button .av{width:30px;height:30px;font-size:12px}
+.ptabs button[aria-selected=true]{color:var(--ink);border-color:var(--amber);background:var(--amber-soft)}
+.pcard{background:var(--card);border-radius:14px;padding:clamp(20px,3vw,32px);margin-top:16px;animation:fade .5s var(--ease)}
+.pcard .who{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.pcard .who .av{width:56px;height:56px;font-size:18px}
+.pcard h3{font-size:22px}
+.pcard .q{font:400 clamp(22px,2.4vw,30px)/1.25 var(--serif);margin:20px 0 22px;max-width:40ch}
+.emp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.emp div{background:rgba(255,255,255,.04);border-radius:10px;padding:14px}
+.emp ul{margin:8px 0 0;padding-left:16px;font-size:14px;color:var(--muted)}
+.emp li+li{margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.tags span{font:500 11px var(--mono);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--muted)}
+.ins{margin-top:16px;border-left:2px solid var(--amber);padding:6px 0 6px 14px;font-size:15px}
+.ins b{display:block;font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.jgrid{display:grid;grid-template-columns:repeat(5,minmax(180px,1fr));gap:10px;margin-top:20px}
+.jc{background:var(--card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;font-size:13.5px;border-top:3px solid var(--c)}
+.jc .e{font-size:22px}
+.jc h3{font-size:17px}
+.jc small{font:500 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block}
+.jc .pp{color:#FF9A8F}
+.jc .ai{background:rgba(143,179,255,.1);color:#AFC6FF;border-radius:8px;padding:8px 10px;margin-top:auto}
+.sent{background:var(--card);border-radius:14px;padding:18px 18px 14px;margin-top:clamp(28px,4vw,44px)}
+.sent svg{width:100%;height:120px;display:block}
+.sent path{stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 2.4s var(--ease)}
+.sent.on path{stroke-dashoffset:0}
+.sl{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+.pio{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
+.pi{background:var(--card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px;font-size:14px}
+.pi div{display:grid;grid-template-columns:86px minmax(0,1fr);gap:10px;align-items:start}
+.pi .l{font:500 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:3px 6px;text-align:center}
+.l.p{background:rgba(240,106,95,.15);color:var(--red)}.l.i{background:rgba(143,179,255,.14);color:#AFC6FF}.l.o{background:rgba(93,211,160,.15);color:var(--green)}
+.pi .ot{color:var(--ink)}
+.pi span:not(.l){color:var(--muted)}
+.aff{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px}
+.ac h4{font:500 14px var(--sans);margin:0 0 10px;color:var(--amber)}
+.ac p{background:#F7D774;color:#2A2410;font-size:12.5px;line-height:1.35;padding:10px;margin:0 0 8px;box-shadow:0 8px 16px -10px rgba(0,0,0,.6);transform:rotate(var(--r,0deg))}
+.ac p:nth-child(odd){--r:-1deg;background:#F6E39A}.ac p:nth-child(3n){--r:.8deg}
+.walk{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center;margin:clamp(28px,4vw,48px) 0 0;background:var(--card);border-radius:18px;padding:clamp(16px,3vw,36px)}
+.walk-ph{border-radius:28px;padding:8px;background:#050506;box-shadow:0 40px 80px -40px rgba(0,0,0,.9)}
+.walk video{display:block;width:100%;border-radius:22px;background:#000;aspect-ratio:688/1072}
+.walk figcaption{font-size:15px;max-width:44ch}
+.walk figcaption b{display:block;font:500 clamp(22px,2.4vw,30px)/1.15 var(--sans);color:var(--ink);margin-bottom:10px;letter-spacing:-.02em}
+@media (max-width:700px){.walk{grid-template-columns:minmax(0,1fr)}.walk-ph{max-width:340px;margin-inline:auto}}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2.4vw,32px);margin-top:clamp(28px,4vw,48px)}
+.shot{margin:0}
+.shot img{border-radius:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8),0 0 0 6px #0B0B0C;width:100%;transition:transform 1s var(--ease)}
+.shot:hover img{transform:translateY(-6px)}
+.shot figcaption{text-align:center}
+.shot figcaption b{display:block;color:var(--ink);font-weight:500;font-size:14px}
+.iter{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:24px}
+.it{display:flex;flex-direction:column;gap:12px}
+.it .im{position:relative}
+.it img{border-radius:18px;box-shadow:0 0 0 5px #0B0B0C;width:100%}
+.it .note{width:auto;font-size:13px}
+.photos{margin-top:clamp(24px,3vw,40px);grid-template-columns:repeat(2,minmax(0,280px))}
+@media (max-width:980px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}.fact:not(:nth-child(3n+1)){padding-left:0;border-left:0}.fact:nth-child(even){padding-left:18px;border-left:1px solid var(--line)}
+.emp,.iter{grid-template-columns:repeat(2,minmax(0,1fr))}.aff{grid-template-columns:repeat(3,minmax(0,1fr))}.shots{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.facts,.pio{grid-template-columns:minmax(0,1fr)}.fact:nth-child(even){padding-left:0;border-left:0}.aff{grid-template-columns:repeat(2,minmax(0,1fr))}.hb{grid-template-columns:minmax(0,1fr) 40px}.hb .t{grid-column:1/-1;grid-row:2}.pi div{grid-template-columns:minmax(0,1fr)}.pi .l{justify-self:start}.photos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}.g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats,.meta{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .st:nth-child(3){padding-left:0;border-left:0}.st:nth-child(n+3){border-top:1px solid var(--line);margin-top:14px}
+  .journey{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}.journey::before{display:none}
+}
+@media (max-width:700px){
+  .body{margin-left:0}
+  .sh{grid-template-columns:minmax(0,1fr)}
+  .g2,.g3,.g4{grid-template-columns:minmax(0,1fr)}
+  .journey{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tlist li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .brand span{display:none}
+  .note{width:calc(50% - 6px)}
+  .track i{font-size:9.5px;padding-left:8px}.lane{grid-template-columns:44px minmax(0,1fr);gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+
+<div class="bar"><div class="wrap bar-in">
+  <a class="brand" href="#top"><i aria-hidden="true"></i><span>InRide</span></a>
+  <nav class="navs" aria-label="Sections"><a href="#framing">Framing</a><a href="#research">Research</a><a href="#personas">Personas</a><a href="#journey">Journey</a><a href="#asis">As-is</a><a href="#opportunity">Opportunities</a><a href="#concepts">Concepts</a><a href="#tobe">To-be</a><a href="#ui">Interface</a><a href="#testing">Testing</a></nav>
+</div><span class="prog" aria-hidden="true"></span></div>
+
+<header class="hero" id="top"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <p class="mono amber f1">— UX case study · Mobility · India</p>
+      <h1><span class="ln"><span style="animation-delay:.05s">Two trusted apps,</span></span><span class="ln"><span style="animation-delay:.18s">one <span class="amber">broken handoff.</span></span></span></h1>
+      <p class="lead f1">Every day, millions of riders open Google Maps to find where they’re going, then leave it to work out how they’ll get there. <b>InRide</b> is my concept for comparing and booking rides without leaving Maps. I built it from desk research, a stakeholder map and the complaints riders post about Maps and the cab apps.</p>
+      <div class="chips f2" aria-label="Process">
+        <a href="#framing">Stakeholder &amp; mind map</a><span>→</span><a href="#research">Secondary research</a><span>→</span><a href="#personas">Personas &amp; empathy</a><span>→</span><a href="#journey">Journey map</a><span>→</span><a href="#asis">As-is blueprint</a><span>→</span><a href="#opportunity">Pain points</a><span>→</span><a href="#concepts">Future concepts</a><span>→</span><a href="#tobe">To-be blueprint</a><span>→</span><a href="#testing">Testing</a>
+      </div>
+    </div>
+    <div class="phone" role="img" aria-label="InRide ride comparison screen: Rapido Bike ₹45, Ola Auto ₹65, Uber Go ₹140 with surge, BluSmart ₹180">
+      <div class="scr">
+        <div class="map"><div class="top"><i>←</i>Choose a ride</div><span class="route"></span></div>
+        <div class="trip">Dhole Patil Road, Pune → <b>Vohuman Cafe</b> · 18 min</div>
+        <div class="rides" id="rides">
+          <div class="ride"><span class="ic">🏍</span><div><b>Rapido Bike<span class="tg c">Cheapest</span></b><small>1 seat · 3 min · ★4.7</small></div><span class="p">₹45</span></div>
+          <div class="ride"><span class="ic">🛺</span><div><b>Ola Auto</b><small>3 seats · 4 min · ★4.6</small></div><span class="p">₹65</span></div>
+          <div class="ride on"><span class="ic">🚗</span><div><b>Uber Go<span class="tg s">Surge</span></b><small>4 seats · 5 min · ★4.8</small></div><span class="p">₹140</span></div>
+          <div class="ride"><span class="ic">⚡</span><div><b>BluSmart<span class="tg f">Fastest</span></b><small>4 seats · 2 min · ★4.9</small></div><span class="p">₹180</span></div>
+        </div>
+        <div class="bookb" id="bookb">Book Uber Go</div>
+      </div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="st"><b>3+</b><span>apps a rider juggles to compare a single fare</span></div>
+    <div class="st"><b>22–28%</b><span>driver cancellation and no-show rate across studied reviews</span></div>
+    <div class="st"><b>2019</b><span>the year Google pulled native Uber and Ola booking from Maps in India</span></div>
+    <div class="st"><b>1 app</b><span>per trip in the redesign, down from Maps + Uber + Ola + Rapido</span></div>
+  </div>
+  <dl class="meta">
+    <div><dt class="mono">Role</dt><dd>UX research, service design &amp; UI</dd></div>
+    <div><dt class="mono">Year</dt><dd>2026</dd></div>
+    <div><dt class="mono">Tools</dt><dd>Figma, FigJam</dd></div>
+    <div><dt class="mono">Context</dt><dd>Pune commuters, Google Maps + cab apps</dd></div>
+  </dl>
+</div></header>
+
+<section id="framing" class="alt"><div class="wrap">
+  <div class="sh"><span class="num">01</span><div><p class="mono">Framing the problem</p><h2>Mind map &amp; stakeholder map</h2><p class="lead">Before any research began, I mapped the problem space and the people inside it: what riders need, what the business wants, what technology allows, and who else has a stake in the ride.</p></div></div>
+  <div class="body">
+    <figure class="plate rv"><img src="images/inride2-mindmap.svg" alt="Problem-space mind map: user needs, trust and safety, tech constraints, competitive landscape, market context, business goals, and risks and constraints around InRide" loading="lazy"><figcaption>Problem-space mind map.</figcaption></figure>
+    <div class="grid g2" style="align-items:center">
+      <figure class="plate rv" style="margin-top:0"><img src="images/inride2-stake.svg" alt="Stakeholder map with the rider at the core, direct-interaction stakeholders in the second ring and systemic influencers in the third" loading="lazy"></figure>
+      <ul class="tlist rv">
+        <li><b>Core</b><span>The rider: regular, irregular and tourist.</span></li>
+        <li><b>Secondary</b><span>Drivers (cab, auto, bike), Google Maps’ navigation layer, payment gateways and wallets, in-app support and chat agents, competing apps like Namma Yatri and inDrive.</span></li>
+        <li><b>Tertiary</b><span>Government regulators (MoRTH, state RTOs, CCPA), driver unions and aggregator associations, platform product, ops and investors.</span></li>
+      </ul>
+    </div>
+  </div>
+</div></section>
+
+<section id="research"><div class="wrap">
+  <div class="sh"><span class="num">02</span><div><p class="mono">Desk research</p><h2>What the market is already telling us</h2><p class="lead">With no access to a live user base, the research leaned on structured secondary sources (news coverage, regulatory filings, consumer surveys and platform documentation), and I read each one looking for patterns in what riders complain about.</p></div></div>
+  <div class="body">
+    <div class="facts">
+      <div class="fact rv"><b>50%</b><p>Uber’s share of the online cab segment. Ola holds 28–34%; Rapido is rising fast at 14–30%.</p><cite>Motilal Oswal / industry trackers, 2025–26</cite></div>
+      <div class="fact rv"><b>74M</b><p>Rapido’s monthly active users by Feb 2026, overtaking Uber India (38M) and Ola (27M).</p><cite>Sensor Tower / Citi Research via Forbes India, ET</cite></div>
+      <div class="fact rv"><b>50–55%</b><p>reported ride-completion rate at one major aggregator, against a 60% internal target.</p><cite>Internal employee accounts via industry press</cite></div>
+      <div class="fact rv"><b>93% / 85%</b><p>of Ola / Uber riders in Bengaluru hit at least one issue in 12 months.</p><cite>LocalCircles survey via Deccan Herald, Aug 2024</cite></div>
+      <div class="fact rv"><b>69/54/46%</b><p>Top complaints: phone use while driving, surge pricing, driver-cancelled bookings.</p><cite>LocalCircles survey, 2024</cite></div>
+      <div class="fact rv"><b>2025</b><p>Regulators mandated cancellation compensation, fare transparency and GPS tracking.</p><cite>MoRTH / Maharashtra Govt notifications</cite></div>
+    </div>
+    <blockquote class="pq rv">“During peak hours, charges are pretty high, and even if we agree to pay, drivers often decline or cancel after asking for the drop location. If new apps can address these issues, many of us would gladly switch.”<cite>A Bengaluru commuter, quoted in Deccan Herald</cite></blockquote>
+    <p class="muted rv" style="margin-top:20px;max-width:70ch">That willingness to switch, and the fact that no single platform satisfies every rider, is why so many people keep three booking apps installed and compare fares on every trip. Maps adds its own friction too: Indian addresses are often descriptive and landmark-based, which makes precise geocoding structurally harder than in grid-based cities.</p>
+
+    <h3 class="sub rv">Google Maps and the cab apps, side by side</h3>
+    <div class="scrollx rv" data-lenis-prevent><table class="cmp">
+      <thead><tr><th>Dimension</th><th>Google Maps (native)</th><th>Cab apps: Uber &amp; Ola</th></tr></thead>
+      <tbody>
+        <tr><td>Access &amp; trust</td><td><span class="pc pro">Pro</span>Pre-installed, near-universal, trusted for navigation accuracy at no cost.</td><td><span class="pc pro">Pro</span>Purpose-built booking flow with payment, ratings and driver assignment.</td></tr>
+        <tr><td>Ride comparison</td><td><span class="pc con">Con</span>Native Uber/Ola/Meru booking was rolled back around 2019; comparison isn’t built in anymore.</td><td><span class="pc con">Con</span>Each app only shows its own fares; comparing means opening both.</td></tr>
+        <tr><td>Booking flow</td><td><span class="pc con">Con</span>Where a ride tab exists, bookings still redirect out to the partner app to finish.</td><td><span class="pc pro">Pro</span>End-to-end booking and in-app payment, no hand-off required.</td></tr>
+        <tr><td>Reliability signals</td><td><span class="pc con">Con</span>No visibility into a driver’s cancellation history before a rider commits.</td><td><span class="pc con">Con</span>No-shows and last-minute cancellations are among the most cited complaints (22–28% of reviews studied).</td></tr>
+        <tr><td>Support</td><td><span class="pc pro">Pro</span>Not applicable: Maps doesn’t own the ride, so it isn’t on the hook for it either.</td><td><span class="pc con">Con</span>Chatbot-first support loops and low first-contact resolution rates repeatedly flagged.</td></tr>
+        <tr><td>Pricing transparency</td><td><span class="pc con">Con</span>No fare estimate at all without opening a partner app.</td><td><span class="pc con">Con</span>Surge is shown, but its timing and logic feel opaque to riders.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3 class="sub rv">Diagnosing the host app: where Maps itself falls short</h3>
+    <p class="muted rv" style="max-width:70ch">Since InRide would live inside Google Maps, I also looked at where Maps itself lets people down. 2025–2026 tech coverage, support threads and reviews surfaced six recurring complaint themes (my thematic tally of sources reviewed).</p>
+    <div class="hbars" id="hbars"></div>
+
+    <h3 class="sub rv">What the wider industry is already building toward</h3>
+    <div class="grid g3">
+      <div class="card rv"><h3>⚡ Predictive fare alerts</h3><p>Forecasting demand so riders can be told a fare is likely to drop shortly, instead of just reacting to surge.</p></div>
+      <div class="card rv"><h3>🌱 EV / green ride filtering</h3><p>Filtering by EV or hybrid vehicles, with an estimated CO₂ saving shown per trip.</p></div>
+      <div class="card rv"><h3>🎙 Voice-first booking</h3><p>Assistant-style booking for elderly and visually impaired riders, already piloted by regional players.</p></div>
+      <div class="card rv"><h3>🛡 Driver reliability score</h3><p>Recent cancellation and no-show rates surfaced before a rider commits to a provider.</p></div>
+      <div class="card rv"><h3>🔗 Multi-modal chaining</h3><p>Metro or bus legs combined with a last-mile cab in a single planned itinerary.</p></div>
+      <div class="card rv"><h3>🌐 Regional language, low-bandwidth</h3><p>Built for Tier-2/3 markets from the ground up, not retrofitted from a Tier-1 default.</p></div>
+    </div>
+    <p class="muted rv" style="font-size:13px;margin-top:20px;max-width:80ch">Sources: LocalCircles surveys; MoRTH, CCPA and Maharashtra Govt notices; Forbes India, Economic Times, Business Today; Google Maps Platform documentation; consumer grievance forums; app-store review themes. Figures are from public sources dated 2024–2026 and should be validated with primary research before product decisions.</p>
+  </div>
+</div></section>
+
+<section id="personas" class="alt"><div class="wrap">
+  <div class="sh"><span class="num">03</span><div><p class="mono">Primary research</p><h2>Persona &amp; empathy mapping</h2><p class="lead">Six commute personas across Pune, built from a qualitative synthesis of what riders say, think, feel and do: daily commuters, safety-first travellers, students, business owners, homemakers and new-to-city movers.</p></div></div>
+  <div class="body">
+    <div class="ptabs rv" role="tablist" id="ptabs"></div>
+    <div class="pcard rv" id="pcard" aria-live="polite"></div>
+    <h3 class="sub rv">Cross-persona synthesis</h3>
+    <p class="muted rv">Reading the six empathy maps side by side, the same threads keep resurfacing regardless of age, income or trip purpose.</p>
+    <ol class="syn">
+      <li class="rv"><b>01</b><div><h3>Fare-comparison fatigue is universal</h3><p class="muted">Every one of the six personas independently compares apps before booking. This isn’t only price-sensitive riders. Everyone does it.</p></div></li>
+      <li class="rv"><b>02</b><div><h3>Everyone cares about safety, but women say it out loud</h3><p class="muted">Vaishali and Vanita foreground safety proactively: silent SOS, family-safe routing. Ashish and Mukesh express the same need indirectly, through route choice and “trustworthy driver” thinking. All six touch it; only two lead with it.</p></div></li>
+      <li class="rv"><b>03</b><div><h3>Pickup-point accuracy is the most repeated tactical complaint</h3><p class="muted">Present in five of six maps, independent of persona type. It’s a foundation-level fix, which is why landmark-based addressing became its own opportunity area.</p></div></li>
+      <li class="rv"><b>04</b><div><h3>New-to-city and student personas lean hardest on offline and low-bandwidth needs</h3><p class="muted">Dhruv and Sneha have neither years of local fare intuition nor a stable connection: exactly the users a bandwidth-heavy comparison layer would fail first.</p></div></li>
+      <li class="rv"><b>05</b><div><h3>Nobody distrusts Google Maps itself</h3><p class="muted">Nobody complained about navigation. The trouble starts when riders leave Maps to compare and book, so that is the only part InRide changes.</p></div></li>
+    </ol>
+  </div>
+</div></section>
+
+<section id="journey"><div class="wrap">
+  <div class="sh"><span class="num">04</span><div><p class="mono">Zooming out</p><h2>The customer journey map</h2><p class="lead">Widening the lens from a single ride to the whole trip, from the moment a destination idea forms to sharing feedback afterwards, surfaces a broader problem than fare comparison alone.</p></div></div>
+  <div class="body">
+    <p class="muted rv" style="max-width:72ch">Urban and semi-urban travel in India runs on tools built for efficiency, not for the people using them. Nearly four in ten women in Indian cities report not feeling safe while travelling, a number that climbs after dark. On the other side of the same ride, most drivers put in over 8-hour days, a third exceeding 14 hours.</p>
+    <div class="grid g4">
+      <div class="card rv"><h3>Fragmentation</h3><p>Navigation, safety, discovery and booking live in separate apps; no app looks after the whole trip.</p></div>
+      <div class="card rv"><h3>Safety is reactive</h3><p>SOS and location sharing are buried in menus instead of built into the route.</p></div>
+      <div class="card rv"><h3>Driver wellbeing is disconnected</h3><p>Apps optimise for ride volume, not sustainable hours or fair pay.</p></div>
+      <div class="card rv"><h3>Discovery is generic</h3><p>Routing shows the fastest path, not what’s worth seeing along the way.</p></div>
+    </div>
+    <div class="jgrid scrollx" id="jgrid" data-lenis-prevent></div>
+  </div>
+</div></section>
+
+<section id="asis" class="alt"><div class="wrap">
+  <div class="sh"><span class="num">05</span><div><p class="mono">Mapping today</p><h2>AS-IS service blueprint</h2><p class="lead">How a rider actually chooses today across Google Maps, Uber, Ola and Rapido for a single trip, front stage and backstage.</p></div></div>
+  <div class="body">
+    <figure class="plate rv"><img src="images/inride2-decision.svg" alt="Decision flow: rider opens Maps, then cab app 1 by habit; if fare is unacceptable opens app 2, then app 3. Regular riders pick the best of three; irregular riders give up and hail a street auto" loading="lazy"><figcaption>The regular persona tolerates the loop; the irregular persona abandons it, a lost booking for every app involved.</figcaption></figure>
+    <figure class="bp rv"><figcaption><h3>Blueprint: booking a ride today</h3><p>One trip, followed from the moment a rider needs to travel to the ride itself. Green notes are regular riders, red notes are irregular riders. The friction sits in stages 4 to 7.</p>
+<ul class="bp-key"><li><i class="k-ph"></i>What the rider sees and touches</li><li><i class="k-cu"></i>What the rider does</li><li class="k-line li">Line of interaction</li><li><i class="k-fr"></i>Visible service</li><li class="k-line lv">Line of visibility</li><li><i class="k-bk"></i>Behind the scenes</li><li class="k-line lin">Internal interaction</li><li><i class="k-sp"></i>Infrastructure &amp; partners</li></ul></figcaption>
+<div class="bp-grid"><div class="bp-head"><span class="bp-st">Stage</span><span class="bp-h ph">Physical evidence</span><span class="bp-h cu">Customer actions</span><span class="bp-h fr">Frontstage</span><span class="bp-h bk">Backstage</span><span class="bp-h sp">Support processes</span></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">01</span><h4>Need arises</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Smartphone, mobile data / Wi-Fi</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Opens Maps out of habit for a known, frequent destination. <br><b class="ir">Irregular:</b> Unsure of the exact name or address, hesitates before opening the app.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>App icon badge, notification prompts (“Where to today?”)</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>User profile and preference engine pre-loads based on time and location patterns</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Device OS location services, mobile network, GPS satellites</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">02</span><h4>Search place on Google Maps</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Google Maps UI, search bar, pins, reviews</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Uses a saved place or recent search, minimal typing. <br><b class="ir">Irregular:</b> Types the full query, scrolls reviews and photos to check it’s the right place.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Maps renders search results, ratings, photos, opening hours</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Google indexes places, aggregates reviews and ratings, ranks results by relevance</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Google Places API, Maps database servers, ad-ranking systems</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">03</span><h4>Evaluate place / route</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Route preview, distance and ETA card, Street View</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Quick glance at the ETA, already trusts the route. <br><b class="ir">Irregular:</b> Checks several route options, zooms in and out to confirm the landmark.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Maps shows route lines, ETA, traffic overlay, alternative routes</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Routing engine calculates the fastest or shortest route from live traffic</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Traffic data feeds (government, telecom sensors), map tile servers, cloud hosting</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">04</span><h4>Switch to ride app</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Ride app icons on the home screen (Ola, Uber, Rapido)</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Long-presses the address to copy it, opens their usual app (brand loyalty). <br><b class="ir">Irregular:</b> Copies the address by hand, unsure which app to open, may open 2–3 apps.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Ride app splash screen loads; shows the last-used address (regular) or a blank field (irregular)</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Ride app pre-fetches nearby driver supply in the background</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>App store services, push notification servers (FCM / APNs)</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">05</span><h4>Enter trip &amp; compare fares</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Fare estimate screen, vehicle category icons</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Pastes or picks a saved address, chooses their usual vehicle, ignores promo banners. <br><b class="ir">Irregular:</b> Re-enters pickup and drop, compares fares across apps, reads promo and surge info carefully.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Real-time fare per category (Mini, Sedan, Auto, Bike), surge indicator, promo codes</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Dynamic pricing engine sets surge from demand and supply; fraud and risk check on the account</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Cloud servers hosting the pricing microservice, geolocation database</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">06</span><h4>Confirm booking</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Booking confirmation screen, OTP</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> One-tap confirm with the saved payment method. <br><b class="ir">Irregular:</b> Picks a payment method each time, double-checks the fare and cancellation policy.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Driver name, photo, vehicle number, OTP, ETA to pickup</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Dispatch algorithm matches the nearest well-rated driver and sends the request to the driver app</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Driver onboarding and verification systems, background dispatch servers</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">07</span><h4>Wait &amp; track driver</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Live map with car icon, driver photo, vehicle number</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Checks the ETA now and then, carries on with other tasks. <br><b class="ir">Irregular:</b> Watches the driver icon closely, may call the driver to confirm the pickup point.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Live GPS tracking, call and chat buttons, “driver arriving” alerts</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>System updates the driver’s GPS every few seconds and recalculates the ETA</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Real-time telemetry servers, SMS / OTP gateway providers</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">08</span><h4>Pickup</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Car, driver ID badge, honk or call notification</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p>Checks the number plate and driver photo before boarding; may share trip status with a contact.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Driver greets the rider, confirms name and destination, starts the trip in the app</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>System logs trip start, timestamps and geofence check-in</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Driver’s own GPS / map app, vehicle telematics (if fitted)</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">09</span><h4>In transit</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>In-app trip screen, seatbelt, AC vents</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> May multitask or take a call. <br><b class="ir">Irregular:</b> Follows the route in the app and corrects the driver if needed.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Driver navigates with the ride app or Google Maps; app shows trip progress and safety check-ins</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Safety monitoring flags route deviations and sends alerts</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Third-party map and routing services, insurance and monitoring partners</p></div></div></div><p class="bp-note">Stage 9 was partly cut off in my original frame; its notes are reconstructed from what remained.</p></figure>
+    <figcaption>Blueprint: booking a ride today, with physical evidence, customer, frontstage and backstage actions. Scroll sideways on small screens.</figcaption>
+  </div>
+</div></section>
+
+<section id="opportunity"><div class="wrap">
+  <div class="sh"><span class="num">06</span><div><p class="mono">From friction to “how might we”</p><h2>Pain point analysis &amp; opportunity areas</h2><p class="lead">Each flagged moment in the blueprint became an insight, then a design opportunity. Rider sentiment slides from confident, to anxious in the wait, and back to neutral; the friction zone sits squarely in Search → Compare → Book.</p></div></div>
+  <div class="body">
+    <div class="sent rv" aria-label="Rider sentiment across the journey: content at trigger, worried while comparing, anxious while waiting, content at pickup">
+      <svg viewBox="0 0 800 140" preserveAspectRatio="none"><defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#5DD3A0"/><stop offset=".45" stop-color="#F06A5F"/><stop offset="1" stop-color="#5DD3A0"/></linearGradient></defs>
+        <rect x="190" y="0" width="420" height="140" fill="rgba(240,106,95,.07)"/><path id="sp" d="M20 40 C140 40 200 95 300 105 S470 120 560 95 S700 40 780 38" fill="none" stroke="url(#sg)" stroke-width="3"/></svg>
+      <div class="sl"><span>🙂 Trigger</span><span>😟 Compare</span><span>😰 Wait</span><span>🙂 Pickup</span></div>
+      <p class="mono" style="color:var(--red);text-align:center;margin-top:6px">Friction zone: Search → Compare → Book → Wait</p>
+    </div>
+    <div class="pio" id="pio"></div>
+
+    <h3 class="sub rv">Two problem statements: regular vs. irregular</h3>
+    <div class="grid g2">
+      <div class="card rv" style="border-color:rgba(232,162,58,.4)"><p class="mono amber">The regular rider</p><p style="color:var(--ink);font-size:16px;margin-top:8px">Daily commuters in Indian cities need a faster way to compare fares across Uber, Ola and Rapido from within their normal route-planning flow, because switching between three apps costs them time on every ride, even when they already know the outcome.</p></div>
+      <div class="card rv" style="border-color:rgba(93,211,160,.4)"><p class="mono" style="color:var(--green)">The irregular rider</p><p style="color:var(--ink);font-size:16px;margin-top:8px">Occasional riders need a low-effort, trustworthy way to book a fair-priced ride without learning three unfamiliar apps under time pressure, because today’s process is confusing enough that many give up and take a less safe, unmetered alternative.</p></div>
+    </div>
+
+    <h3 class="sub rv">Affinity mapping: five themes from scattered findings</h3>
+    <div class="aff" id="aff"></div>
+
+    <h3 class="sub rv">Five opportunity areas, before deciding on features</h3>
+    <div class="grid g3">
+      <div class="card rv"><p class="mono amber">OPP · 01</p><h3>Unified Comparison Layer</h3><p>A single place to see live fares and ETAs across Uber, Ola and Rapido, without opening any of them.</p></div>
+      <div class="card rv"><p class="mono amber">OPP · 02</p><h3>Transparent Fare Ledger</h3><p>Making the split between what a rider pays and what a driver keeps visible, by default.</p></div>
+      <div class="card rv"><p class="mono amber">OPP · 03</p><h3>Reliable Safety Signal</h3><p>A safety mechanism riders, especially women riding alone, can trust is actually live.</p></div>
+      <div class="card rv"><p class="mono amber">OPP · 04</p><h3>Human-First Addressing</h3><p>Landmark-based pickup notes that travel with the pin, instead of being re-explained every ride.</p></div>
+      <div class="card rv"><p class="mono amber">OPP · 05</p><h3>Fair Access for Short Trips</h3><p>A way to guarantee short or off-route fares don’t get silently refused across every app.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="concepts" class="alt"><div class="wrap">
+  <div class="sh"><span class="num">07</span><div><p class="mono">Concepting</p><h2>Future service concepts</h2><p class="lead">Each opportunity area became a concrete service concept, pulling in the industry-trend signals from secondary research and the AI touchpoints surfaced in the journey map.</p></div></div>
+  <div class="body"><div class="grid g4" id="concepts-grid"></div></div>
+</div></section>
+
+<section id="tobe"><div class="wrap">
+  <div class="sh"><span class="num">08</span><div><p class="mono">Designing the fix</p><h2>To-Be service blueprint</h2><p class="lead">Booking a ride, redesigned as one unified layer inside Google Maps: one app instead of four for the same trip.</p></div></div>
+  <div class="body">
+    <div class="stats" style="margin-top:clamp(28px,4vw,48px)">
+      <div class="st rv"><b>1 app</b><span>opened per trip, down from Maps + Uber + Ola + Rapido</span></div>
+      <div class="st rv"><b>30 sec</b><span>to compare all three fares, down from 3–4 minutes</span></div>
+      <div class="st rv"><b>71%</b><span>of the fare shown going to the driver, invisible today</span></div>
+      <div class="st rv"><b>100%</b><span>of short trips guaranteed a driver within 90 seconds</span></div>
+    </div>
+    <p class="muted rv" style="font-size:13px;margin-top:12px">Target outcomes for the redesign.</p>
+    <div class="toggle rv" role="group" aria-label="Compare flows"><button aria-pressed="true" data-f="asis">As-is</button><button aria-pressed="false" data-f="tobe">To-be</button></div>
+    <div class="race" id="race">
+      <div class="lane"><span class="mono">As-is</span><div class="track"><i data-w="100" style="background:var(--red)">27 min · 4 apps · irregular rider abandons</i></div></div>
+      <div class="lane"><span class="mono">To-be</span><div class="track"><i data-w="78" style="background:var(--green)">21 min · 1 app · both personas complete the ride</i></div></div>
+    </div>
+    <ol class="steps" id="flowsteps"></ol>
+    <figure class="bp rv"><figcaption><h3>Blueprint: booking a ride, redesigned</h3><p>The same trip inside Maps. Stage 4, the automatic comparison, replaces opening three apps.</p>
+<ul class="bp-key"><li><i class="k-ph"></i>What the rider sees and touches</li><li><i class="k-cu"></i>What the rider does</li><li class="k-line li">Line of interaction</li><li><i class="k-fr"></i>Visible service</li><li class="k-line lv">Line of visibility</li><li><i class="k-bk"></i>Behind the scenes</li><li class="k-line lin">Internal interaction</li><li><i class="k-sp"></i>Infrastructure &amp; partners</li></ul></figcaption>
+<div class="bp-grid"><div class="bp-head"><span class="bp-st">Stage</span><span class="bp-h ph">Physical evidence</span><span class="bp-h cu">Customer actions</span><span class="bp-h fr">Frontstage</span><span class="bp-h bk">Backstage</span><span class="bp-h sp">Support processes</span></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">01</span><h4>Need arises</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Smartphone, one app icon</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Opens the one app directly, out of habit. <br><b class="ir">Irregular:</b> Opens the same app, no need to decide which one, so less hesitation.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Personalised “Where to?” prompt using time and location</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Personalisation engine pulls saved places and time-of-day travel patterns</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Device location services, cloud user-profile database</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">02</span><h4>Search place (in-app map)</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Search bar, map and place autocomplete on one screen</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Taps a saved place chip, no typing. <br><b class="ir">Irregular:</b> Types the destination once, sees photos and ratings inline without leaving the app.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Unified search renders results with the embedded maps SDK, no redirect</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Places and geocoding service ranks results by relevance and past use</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Maps / geocoding API (e.g. Google Places), search indexing servers</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">03</span><h4>View place &amp; route preview</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Route card: distance, ETA, live traffic, saved-place tag</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p>Reviews one route and ETA card, taps “Find rides”. Same action for both personas.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Route, traffic and ETA overlaid from the routing engine; ride availability pre-fetched</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Routing engine uses live traffic; availability pre-check runs silently for all three providers</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Traffic feeds, routing microservice, provider availability endpoints</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">04</span><h4>Auto-compare all cabs <em>NEW</em></h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Split-screen fare card: Ola, Uber, Rapido together with price, ETA, rating</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> Glances at the comparison, usually picks the provider chosen before. <br><b class="ir">Irregular:</b> Reads all three fares and ratings side by side, no app switching.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Platform queries Ola, Uber and Rapido at once and shows normalised cards (price, ETA, car type, rating)</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Aggregation layer calls pricing and availability APIs in parallel, normalises units and ETA, applies fair ranking</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Partner integration layer (API gateways / SDKs), rate-limit and caching, format normalisation</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">05</span><h4>Select best ride</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>“Best value”, “Fastest” and “Cheapest” badges on each option</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p>Taps the chosen ride card. No separate app to open; one motion for both personas.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Platform tags options (cheapest, fastest, top-rated) with the scoring rule shown to the user</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Scoring engine weighs price, ETA, past reliability and user preference</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Rules engine / ML ranking model hosting, A/B testing infrastructure</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">06</span><h4>One-tap confirm &amp; pay</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>One confirmation sheet with the saved payment method filled in</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p><b class="rg">Regular:</b> One tap on “Confirm” with the default payment. <br><b class="ir">Irregular:</b> Confirms payment from the unified wallet set up once at onboarding; still one tap.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Platform sends one booking request to the chosen provider and shows instant confirmation</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Orchestration service places the booking in the provider’s dispatch system and handles its auth tokens</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Provider dispatch systems, auth / token management servers</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">07</span><h4>Track driver (unified)</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>One live-tracking map, the same look for every provider</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p>Watches one tracking screen; no need to remember which app to reopen.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Each provider’s live GPS feed shown in one consistent tracking UI</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Middleware polls each provider’s tracking API and maps it to one data schema</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Per-provider telemetry servers, WebSocket streaming for live location</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">08</span><h4>Pickup</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Driver card, OTP, vehicle number, same UI for every provider</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p>Confirms driver and vehicle in the same familiar UI, whichever provider was matched.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Platform confirms trip start (geofence / OTP) and syncs it to the unified history</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Trip start logged in both the platform’s and the provider’s records; reconciliation starts</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Provider trip-management systems, geofencing services</p></div></div><div class="bp-row"><div class="bp-stage"><span class="bp-n">09</span><h4>In transit (unified)</h4></div><div class="bp-c ph"><span class="bp-l">Physical evidence</span><p>Same map UI with a safety button</p></div><div class="bp-c cu"><span class="bp-l">Customer actions</span><p>Rides along; SOS and help sit behind one consistent button, whatever the provider.</p></div><div class="bp-c fr"><span class="bp-l">Frontstage</span><p>Platform shows trip details and check-ins; support runs through one interface for every provider</p></div><div class="bp-c bk"><span class="bp-l">Backstage</span><p>Safety service watches for route deviation across providers with one standard for tickets</p></div><div class="bp-c sp"><span class="bp-l">Support processes</span><p>Provider safety systems, insurance, map and routing services</p></div></div></div><p class="bp-note">Stage 9 was partly cut off in my original frame; its notes are reconstructed from what remained.</p></figure>
+    <figcaption>Blueprint: booking a ride, redesigned. The new auto-compare stage queries Ola, Uber and Rapido in parallel and normalises the results.</figcaption>
+  </div>
+</div></section>
+
+<section id="ui" class="alt"><div class="wrap">
+  <div class="sh"><span class="num">09</span><div><p class="mono">Interface</p><h2>The whole journey, inside Maps</h2><p class="lead">Search a place, compare rides, book, track the driver and navigate. The screens keep Google Maps’ familiar patterns, and safety controls (share trip, SOS and a verified-driver badge) stay one tap away.</p></div></div>
+  <div class="body">
+    <figure class="walk rv">
+      <div class="walk-ph"><video id="walk" src="video/inride-prototype.mp4" poster="video/inride-poster.jpg" controls muted playsinline preload="metadata" aria-label="Screen recording of the InRide prototype: explore, place details, community reports, compare rides, payment, live tracking, ride in progress and arrival"></video></div>
+      <figcaption><b>Prototype walkthrough</b>The full flow in 2½ minutes: explore and search, place details with social verification, community reports, compare rides across Uber, Ola and Rapido, payment and offers, pickup guidance, live tracking, and the post-ride review.</figcaption>
+    </figure>
+    <div class="shots" id="shots"></div>
+  </div>
+</div></section>
+
+<section id="testing"><div class="wrap">
+  <div class="sh"><span class="num">10</span><div><p class="mono">Testing &amp; iteration</p><h2>What changed after people tried it</h2><p class="lead">Participants worked through the prototype on a laptop. Their feedback was captured as notes on the screens, then built into the next version. Switch between the two to compare.</p></div></div>
+  <div class="body">
+    <div class="photos rv"><img src="images/inride-test1.jpg" alt="A participant testing the InRide prototype on a laptop" loading="lazy"><img src="images/inride-test2.jpg" alt="A second participant testing the prototype" loading="lazy"></div>
+    <div class="toggle rv" role="group" aria-label="Iteration" id="itTog"><button aria-pressed="false" data-v="b">Before iterating</button><button aria-pressed="true" data-v="a">After iterating</button></div>
+    <div class="iter" id="iter"></div>
+    <p class="quote rv">What I kept coming back to was <em>the handoff</em>, when a rider already knows where they’re going and still has to leave Maps to get a ride.</p>
+  </div>
+</div></section>
+
+<section class="next"><div class="wrap">
+  <p class="mono">Back to</p>
+  <a class="nextlink" href="https://claude.ai/artifact/Up3BahYMs2yJcMhMzdrvcn" target="_blank" rel="noopener"><span>Portfolio</span><span class="ar">→</span></a>
+  <a class="btn" href="https://www.figma.com/design/LGGmRj6nbaBDGeTNAvGRGA/UX-IND?node-id=352-580" target="_blank" rel="noopener">View the Figma file ↗</a>
+</div></section>
+<footer><div class="wrap">Isha Nikam · 2026 · Concept project. Not affiliated with Google, Uber, Ola, Rapido or BluSmart. Research figures are from public secondary sources (2024–2026); fares and names in screens are illustrative.</div></footer>
+
+<script>
+const $=s=>document.querySelector(s),calm=matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+/* flows */
+const FL={asis:[["Needs to travel: opens Google Maps, checks route and ETA","ok"],["Needs a cab or bike: opens cab app #1 by habit","x"],["Fare or wait not acceptable: opens app #2, compares again","x"],["Still not acceptable: opens app #3 for a last comparison","x"],["Regular rider picks the best of three; irregular rider gives up and hails a street auto","x"]],
+tobe:[["T+0 · Needs to travel: opens Google Maps, as always","ok"],["T+0.5m · Sees one unified ride card: Uber, Ola and Rapido fares, reliability scores and EV badges, no app switching","ok"],["Best option already highlighted (acceptable 95% of the time); otherwise filter by cheapest, fastest or EV","ok"],["T+1m · Books in one tap, landmark pickup pin auto-attached","ok"],["Wait · Verified safety signal active, heartbeat checked every 30 seconds","ok"],["Ride · Live route, safety ping continues throughout","ok"],["Pay · Sees the exact driver payout and rates in one tap; same fast path for both personas","ok"]]};
+function flow(k){$("#flowsteps").innerHTML=FL[k].map((s,i)=>`<li data-n="0${i+1}" class="${s[1]==="x"?"bad":""}" style="animation-delay:${i*.08}s"><span>${s[0]}<small class="${s[1]}">${s[1]==="x"?"Friction":"Smooth"}</small></span></li>`).join("");document.querySelectorAll("#tobe .toggle button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===k))}
+document.querySelector("#tobe .toggle").addEventListener("click",e=>{const b=e.target.closest("button");if(b)flow(b.dataset.f)});flow("asis");
+
+/* maps complaints */
+const HB=[["Cluttered search: spam listings, fake reviews",26],["AI search (Ask Maps) inconsistent outside the US",19],["Confusing multi-leg transit transfers",17],["Key features disabled when logged out",14],["No native fare comparison or cab booking",13],["Weak highway guidance: street names, not exits",11]];
+$("#hbars").innerHTML=HB.map(h=>`<div class="hb rv"><span>${h[0]}</span><span class="t"><i data-w="${h[1]/26*100}"></i></span><b>${h[1]}%</b></div>`).join("");
+/* personas */
+const PER=[
+{n:"Ashish",a:28,c:"#E8A23A",r:"Software engineer · Daily commuter · Pune, from Baramati",q:"I’d rather take a safer route than save five minutes.",s:["“I compare cab prices before booking.”","“I prefer safer roads at night.”"],t:["Am I paying more than necessary?","Can I trust this driver?"],f:["Frustrated switching between apps","Relieved after sharing live location"],d:["Compares Uber & Ola fares","Uses Google Maps daily"],g:["GPS pickup inaccuracy","App switching","Fare comparison","One-tap SOS"],i:"Efficiency-driven but not efficiency-only: he’ll trade five minutes for a safer route without being asked, so “fastest” can’t be InRide’s only sort order."},
+{n:"Vaishali Salve",a:32,c:"#5DD3A0",r:"Admin, ADYPU · Daily commuter · Pune",q:"Safety matters more than reaching five minutes earlier.",s:["“Safety comes before speed.”","“I don’t like travelling alone late.”"],t:["Is the driver trustworthy?","Should I wait for fares to drop?"],f:["Unsafe when drivers ask personal questions","Frustrated with surge pricing"],d:["Shares trip with family","Checks driver details & reviews"],g:["Surge pricing","Inaccurate pickup","Silent SOS","Verified reviews"],i:"Safety isn’t a feature she’ll dig for. It needs to be visible and verifiable before she books, not a setting buried after something goes wrong."},
+{n:"Sneha",a:21,c:"#8FB3FF",r:"College student · Frequent explorer · Pune, from Indore",q:"I don’t want to switch between four different apps just to plan one outing.",s:["“Budget is important.”","“I always look at photos before visiting.”"],t:["Which app is offering the cheapest cab?","Can I trust these reviews?"],f:["Excited to explore new places","Worried about poor internet"],d:["Compares fares across apps","Travels with friends"],g:["Wrong pickup pins","Poor internet","Offline maps","Fare comparison"],i:"Budget-first and bandwidth-constrained at once: a comparison layer that fails on patchy connectivity fails exactly the persona most motivated to use it."},
+{n:"Mukesh Kumar",a:41,c:"#F06A5F",r:"Business owner · Frequent traveller · Pune",q:"Reliable information is more important than having more features.",s:["“Traffic changes everything.”","“I don’t blindly trust Maps.”"],t:["Is there a faster alternative?","Will this delay my meeting?"],f:["Pressured to arrive on time","Confident when traffic data is updated"],d:["Checks alternate routes","Books cabs during business trips"],g:["Inconsistent ETAs","App switching","Live traffic","Verified reviews"],i:"He values dependability over novelty: a reliability score only earns his trust if it’s built on data he can sense is accurate, not a marketing badge."},
+{n:"Vanita Pandey",a:35,c:"#C9A6FF",r:"Homemaker · Family trip planner · Pune",q:"I don’t mind spending more time if my family feels safe.",s:["“Family safety comes first.”","“I check parking before going.”"],t:["Is this place safe for my family?","Can I trust this driver?"],f:["Responsible for her family’s safety","Stressed by rash driving"],d:["Shares trip details","Plans family outings via Maps"],g:["Pickup confusion","Rash driving","Family-safe routes","Emergency support"],i:"She’s booking on behalf of others, not just herself: trust signals need to be legible enough to reassure someone who isn’t even in the car."},
+{n:"Dhruv Jain",a:30,c:"#F7D774",r:"Software developer · New to the city · Pune, from Jaipur",q:"Planning a trip shouldn’t require opening five different apps.",s:["“I always compare prices.”","“Offline maps are essential.”"],t:["Which cab app is cheaper?","What if I lose internet?"],f:["Overwhelmed by too many apps","Confident with live traffic"],d:["Books cabs frequently","Tracks routes independently"],g:["Poor network","Driver confusion","Offline navigation","Real-time comparison"],i:"New to the city means no personal fare intuition yet: he needs the comparison layer to make the “which app is usually cheaper here” judgement he hasn’t built up."}];
+const ini=n=>n.split(" ").map(w=>w[0]).join("");
+$("#ptabs").innerHTML=PER.map((p,i)=>`<button role="tab" data-i="${i}" aria-selected="${i===0}"><span class="av" style="background:${p.c}">${ini(p.n)}</span>${p.n} · ${p.a}</button>`).join("");
+const L=(t,a)=>`<div><span class="mono">${t}</span><ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+function per(i){const p=PER[i];$("#pcard").innerHTML=`<div class="who"><span class="av" style="background:${p.c}">${ini(p.n)}</span><div><h3>${p.n} · ${p.a}</h3><p class="muted" style="font-size:14px">${p.r}</p></div></div><p class="q">“${p.q}”</p><div class="emp">${L("Says",p.s)}${L("Thinks",p.t)}${L("Feels",p.f)}${L("Does",p.d)}</div><div class="tags">${p.g.map(x=>`<span>${x}</span>`).join("")}</div><p class="ins"><b>Insight</b>${p.i}</p>`;$("#pcard").style.animation="none";void $("#pcard").offsetWidth;$("#pcard").style.animation="";document.querySelectorAll("#ptabs button").forEach((b,j)=>b.setAttribute("aria-selected",j===i))}
+$("#ptabs").addEventListener("click",e=>{const b=e.target.closest("button");if(b)per(+b.dataset.i)});per(0);
+/* journey */
+const JR=[["😃","Discover","Find a place to visit","Information overload, hard to find relevant spots","Proactive, contextual suggestions based on past behaviour","#5DD3A0"],["😐","Search","Locate a specific destination","Fake reviews, inaccurate operating hours","Recommendation engine that filters anomalies","#E8A23A"],["😟","Evaluate","Verify the place is authentic","Overly promotional photos masking reality","Trust score computed from visual analysis of user uploads","#F06A5F"],["😐","Transportation","Choose the best transport mode","Constantly switching apps to check prices","Unified fare comparison & prediction model","#E8A23A"],["😟","Customization","Select the safest or fastest route","Poor road conditions or unsafe areas not marked","Live traffic & safety intelligence mapping","#F06A5F"]];
+$("#jgrid").innerHTML=JR.map((j,i)=>`<div class="jc rv" style="--c:${j[5]}"><span class="mono">Stage ${i+1}</span><span class="e">${j[0]}</span><h3>${j[1]}</h3><div><small>Goal</small>${j[2]}</div><div class="pp"><small>Pain point</small>${j[3]}</div><div class="ai">AI: ${j[4]}</div></div>`).join("");
+/* pain-insight-opportunity */
+const PIO=[["Comparing fares means opening 2–3 separate apps.","Riders abandon comparison shopping because of the friction, not because they don’t want the best fare.","Show live, side-by-side fares and ETAs from every provider without leaving Maps."],["Booking still redirects out to a partner app to finish.","Every hand-off is a chance for the rider to drop the task entirely.","Let a rider book and pay end-to-end, fully inside Maps."],["Driver no-shows and cancellations happen with no warning (22–28% of studied reviews).","Riders have zero visibility into reliability before they commit to waiting.","Surface a driver or provider reliability signal before booking, not after."],["Surge pricing feels sudden and unexplained.","Opacity, more than price itself, is what erodes trust.","Help riders predict and time their booking around price swings."],["Drivers report losing 25–40% of every fare to commission.","Riders rarely see this; fare and driver payout feel disconnected on every platform.","Make the fare-to-payout split visible enough to build trust on both sides."],["In-app SOS buttons have been reported to fail exactly when needed.","A feature that exists but can’t be trusted is functionally worse than no feature at all.","Design a safety signal riders can verify is actively working, before they need it."]];
+$("#pio").innerHTML=PIO.map(p=>`<div class="pi rv"><div><span class="l p">Pain</span><span>${p[0]}</span></div><div><span class="l i">Insight</span><span>${p[1]}</span></div><div><span class="l o">Opportunity</span><span class="ot">${p[2]}</span></div></div>`).join("");
+/* affinity */
+const AF=[["App switching fatigue",["Opens Uber, then Ola, then Rapido just to compare","“I lose 3–4 minutes every ride comparing apps I already know”","Irregular riders give up after 1–2 apps"]],["Fare & earnings opacity",["Drivers report losing 25–40% to commission","No fare floor: a trigger for the Feb 2026 strike","Fare-to-payout split is invisible to riders"]],["Trust & safety",["SOS button reported unresponsive, Gurugram, Dec 2024","Panic-button reliability is a repeat doubt","Fragmented accountability: app, driver or owner?"]],["Addressing & access",["No standardised addressing system","“Near the temple, past the speed bump” beats a pin","Short or off-route fares quietly refused"]],["Platform gaps (Maps itself)",["No native fare comparison since 2018–19","Cluttered, spam-heavy search results","AI search inconsistent outside the US"]]];
+$("#aff").innerHTML=AF.map(a=>`<div class="ac rv"><h4>${a[0]}</h4>${a[1].map(x=>`<p>${x}</p>`).join("")}</div>`).join("");
+/* concepts */
+const C=[["⚖️","Unified Compare Card","One card inside Maps with live Uber, Ola and Rapido fares, ETAs and reliability scores side by side, sortable by cheapest, fastest or EV."],["🛡","Driver Reliability Score","A plain-language score built from aggregated cancellation and no-show history, shown before a rider commits to waiting."],["📡","Safety Heartbeat Signal","A verifiable “active now” safety indicator with a periodic check-in ping, rather than a button whose state no one can confirm."],["📍","Landmark Pickup Notes","A pickup note that travels with the pin across providers, so “near the temple, past the speed bump” only has to be said once."],["🧾","Transparent Fare Ledger","A receipt that shows the exact driver payout alongside the fare, visible by default, not buried in a help article."],["✅","Guaranteed Short-Trip Acceptance","A fallback queue that instantly reassigns a short or off-route trip to another provider instead of letting it be silently refused."],["🎙","Voice & Regional-Language Booking","Assistant-style booking for elderly, visually impaired or non-English-first riders, aimed squarely at Tier-2/3 access."],["🔮","Predictive Fare Alerts","A gentle nudge that a fare is likely to drop shortly, turning opaque surge pricing into something a rider can plan around."]];
+$("#concepts-grid").innerHTML=C.map(c=>`<div class="card rv"><p style="font-size:24px;margin:0">${c[0]}</p><h3>${c[1]}</h3><p>${c[2]}</p></div>`).join("");
+/* final screens */
+const SH=[["a_explore","Explore","Language selector, nearby places, SOS"],["a_search","Search results","Crowd and wait time on every place"],["a_place","Place details","Live visitors, BharatNav verified, Compare Ride"],["a_choose","Choose a ride","Reliability, driver payout, EV filter"],["b_confirmed","Ride confirmed","PIN, verified driver, Share and SOS"],["b_nav","In-trip navigation","Share trip, add stop, report an issue"]];
+$("#shots").innerHTML=SH.map(s=>`<figure class="shot rv"><img src="images/inride-${s[0]}.jpg" alt="InRide ${s[1]} screen" loading="lazy"><figcaption><b>${s[1]}</b>${s[2]}</figcaption></figure>`).join("");
+/* iteration */
+const IT=[["explore","Visible language selector","Explore: an EN switch at the top for regional-language riders."],["search","Crowd level or wait-time indicator","Search: “Busy · 10m wait” and “Moderate crowd” on each result."],["place","Live crowd level + social verification","Place details: 342 visitors today, “Busy now · ~15 min wait”, Instagram and Facebook links."],["choose","Clearer ride trade-offs","Choose a ride: reliability and low-cancellation badges, driver payout, Green/EV filter, “surge may ease in ~10 min”."]];
+function iter(v){$("#iter").innerHTML=IT.map(t=>`<div class="it"><div class="im"><img src="images/inride-${v}_${t[0]}.jpg" alt="${v==="a"?"After":"Before"} iterating: ${t[0]} screen" loading="lazy"></div>${v==="a"?`<div class="note" style="--r:${t[0]==="search"||t[0]==="choose"?"1deg":"-1deg"}">${t[1]}<small>${t[2]}</small></div>`:`<p class="muted" style="font-size:13px;text-align:center">First version</p>`}</div>`).join("");document.querySelectorAll("#itTog button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v===v))}
+$("#itTog").addEventListener("click",e=>{const b=e.target.closest("button");if(b)iter(b.dataset.v)});iter("a");
+/* sentiment + bars on view */
+const io3=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add("on");x.target.querySelectorAll("[data-w]").forEach(i=>i.style.width=i.dataset.w+"%");io3.unobserve(x.target)}}),{threshold:.3});
+[$(".sent"),$("#hbars")].forEach(e=>calm?(e.classList.add("on"),e.querySelectorAll("[data-w]").forEach(i=>i.style.width=i.dataset.w+"%")):io3.observe(e));
+
+
+/* walkthrough video: play muted when in view, pause when it leaves */
+(function(){const v=document.getElementById("walk");if(!v||calm||!("IntersectionObserver" in window))return;let user=false;v.addEventListener("pause",()=>{if(!v.dataset.auto)user=true});
+new IntersectionObserver(es=>es.forEach(x=>{if(user)return;if(x.isIntersecting){v.play().catch(()=>{})}else{v.dataset.auto=1;v.pause();delete v.dataset.auto}}),{threshold:.5}).observe(v)})();
+/* hero ride cycling */
+(function(){const r=[...document.querySelectorAll("#rides .ride")],names=["Rapido Bike","Ola Auto","Uber Go","BluSmart"];let k=2;if(calm)return;setInterval(()=>{r[k].classList.remove("on");k=(k+1)%r.length;r[k].classList.add("on");$("#bookb").textContent="Book "+names[k]},2200)})();
+
+/* bars */
+const io2=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll("[data-w]").forEach(i=>i.style.width=i.dataset.w+"%");io2.unobserve(x.target)}}),{threshold:.4});
+io2.observe($("#race"));if(calm)document.querySelectorAll("[data-w]").forEach(i=>i.style.width=i.dataset.w+"%");
+
+/* reveal + nav */
+(function(){
+  document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#"]');if(!a)return;const t=document.getElementById(a.getAttribute("href").slice(1));if(!t)return;e.preventDefault();t.scrollIntoView({behavior:calm?"auto":"smooth"})});
+  const els=[...document.querySelectorAll(".rv,.sh,.plate")].filter(e=>!e.closest(".pcard"));els.forEach(e=>e.classList.add("rv"));
+  if(!calm&&"IntersectionObserver" in window){const g=new Map();
+    els.forEach(e=>{if(e.getBoundingClientRect().top>innerHeight*.92){const p=e.parentElement,n=g.get(p)||0;g.set(p,n+1);e.style.setProperty("--d",Math.min(n,5)*70+"ms");e.classList.add("pre")}});
+    const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.remove("pre");io.unobserve(x.target)}}),{threshold:.06,rootMargin:"0px 0px -6% 0px"});
+    els.filter(e=>e.classList.contains("pre")).forEach(e=>io.observe(e));}
+  const nav=$(".navs"),bar=$(".bar"),links=[...nav.querySelectorAll("a")],items=links.map(a=>[document.getElementById(a.getAttribute("href").slice(1)),a]);let last;
+  function upd(){const y=scrollY+160;let c=null;items.forEach(([el,a])=>{if(el.getBoundingClientRect().top+scrollY<=y)c=a});if(c!==last){links.forEach(a=>a.classList.toggle("on",a===c));last=c}const h=document.documentElement.scrollHeight-innerHeight;bar.style.setProperty("--p",h>0?Math.min(1,scrollY/h):0)}
+  addEventListener("scroll",upd,{passive:true});upd();
+})();
+</script>
+<script>
+/* inside the portfolio viewer: route links back to the portfolio instead of opening new tabs */
+(function(){
+  if (window.parent === window) return;
+  var PORTFOLIO = "https://claude.ai/artifact/Up3BahYMs2yJcMhMzdrvcn";
+  var MAP = [
+    ["https://claude.ai/artifact/XT2TYcfM2uXetYD7TrpFRw", "proto-test-mode"],
+    ["https://math-crank-81314852.figma.site", "proto-crane-health"],
+    ["https://www.figma.com/design/LGGmRj6nbaBDGeTNAvGRGA", "proto-inride"],
+    ["https://www.figma.com/proto/LGGmRj6nbaBDGeTNAvGRGA", "proto-inride"],
+    ["proto/index.html", "proto-dermasafe"]
+  ];
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[href]"); if (!a) return;
+    var h = a.getAttribute("href") || "";
+    if (h.indexOf(PORTFOLIO) === 0) { e.preventDefault(); parent.postMessage({ iv: "close" }, "*"); return; }
+    for (var i = 0; i < MAP.length; i++) if (h.indexOf(MAP[i][0]) === 0) { e.preventDefault(); parent.postMessage({ iv: "open", id: MAP[i][1] }, "*"); return; }
+  }, true);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") parent.postMessage({ iv: "close" }, "*"); });
+})();
+</script>
+</body></html>
